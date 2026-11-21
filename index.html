@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Tabulación Neotel - Capacitación</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR AZUL OFICIAL NEOTEL -->
+  <header class="neotel-top-navbar">
+    <div class="neotel-logo">
+      <span class="logo-symbol">🌀</span>
+      <strong>Neotel</strong>
+      <small>Tecnologia para contact centers</small>
+    </div>
+    <div class="neotel-top-selectors">
+      <span>Crm: <select class="top-select"><option>1 - IGALFER</option></select></span>
+      <span>Campaña: <select class="top-select"><option>3 - IGALFER</option></select></span>
+      <span>Estado: <select class="top-select-green"><option>Disponible</option></select></span>
+      <span class="status-clock">00:00 <strong>OUT</strong></span>
+      <span class="top-icons">⚙️ 🎧 ❓</span>
+    </div>
+  </header>
+
+  <!-- CONTROL DE ENTRENAMIENTO Y DIÁLOGO / AUDIO -->
+  <section class="call-control-container">
+    <div class="call-header-left">
+      <span class="badge-role">SIMULADOR EN CURSO</span>
+      <h2 id="scenario-title">Cargando caso...</h2>
+      <audio id="call-audio" preload="auto"></audio>
+    </div>
+    
+    <div class="call-header-right">
+      <button id="btn-start-call" class="btn-dialer-call">📞 Iniciar Llamada</button>
+      <span id="call-status" class="call-status-idle">En espera</span>
+    </div>
+  </section>
+
+  <!-- CAJA DIDÁCTICA: TRANSCRIPCIÓN / DESCRIPCIÓN DE LA LLAMADA (Visible mientras no hay audio) -->
+  <section class="transcript-box" id="transcript-box">
+    <div class="transcript-header">
+      <span>🎙️ Transcripción en vivo de la llamada:</span>
+      <small id="transcript-timer-note">(Escucha y lee atentamente antes de tabular)</small>
+    </div>
+    <div class="transcript-body" id="transcript-body">
+      <em>Presiona <strong>"📞 Iniciar Llamada"</strong> para reproducir el diálogo del cliente.</em>
+    </div>
+  </section>
+
+  <!-- VENTANA PRINCIPAL NEOTEL -->
+  <main class="neotel-window">
+    
+    <!-- PESTAÑAS SUPERIORES -->
+    <div class="neotel-tabs">
+      <div class="tab active">Gestión de contactos <span class="tab-close">✖</span></div>
+      <div class="tab">Chat interno <span class="tab-close">✖</span></div>
+    </div>
+
+    <!-- SUB-BARRA DE BOTONES Y STATUS NEOTEL -->
+    <div class="neotel-toolbar">
+      <div class="toolbar-left">
+        <select class="input-neotel-sm"><option>Preview ℹ️</option></select>
+        <span class="db-badge" id="lead-db-tag">Db: 9 - Base Activa ARgentina 2023</span>
+        <button class="btn-tool">🔓 Liberar</button>
+        <button class="btn-tool">Gest efva.</button>
+        <button class="btn-tool">Gest efva. (2)</button>
+        <button class="btn-tool btn-stop">■ Detener</button>
+        <button class="btn-tool btn-hangup">📞 Cortar</button>
+      </div>
+    </div>
+
+    <!-- SUB-BARRA DE VIGENCIA Y DISCADO -->
+    <div class="neotel-subbar">
+      <span>Efectivas vigencia: <input type="text" value="06/06/2026" readonly class="input-neotel-xs"></span>
+      <span>No efectivas vigencia: <input type="text" value="06/06/2026" readonly class="input-neotel-xs"></span>
+      <span>Tipo discador: <input type="text" value="Predictive" readonly class="input-neotel-xs"></span>
+      <span>Device: <input type="text" value="OK" readonly class="input-neotel-xs" style="width: 35px;"></span>
+      <span>Hora local: <input type="text" value="11:14" readonly class="input-neotel-xs" style="width: 45px;"></span>
+    </div>
+
+    <!-- FRANJA AZUL: ID Y BASE -->
+    <div class="neotel-section-header" id="contact-bar-title">
+      Id: <span id="lead-id">5620197</span> <span id="lead-db-header">Db: 9 - Base Activa ARgentina 2023 segunda mitad</span> (Tel.: <span id="lead-phone-header">0341155458969</span>)
+    </div>
+
+    <!-- FICHA COMPLETA DEL CLIENTE (TAL CUAL LA FOTO) -->
+    <section class="neotel-card">
+      <div class="card-subtitle">.:Datos de Contacto:.</div>
+      <div class="neotel-form-container">
+        
+        <div class="form-row">
+          <label>Nombre:</label>
+          <input type="text" id="lead-name" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Apellido:</label>
+          <input type="text" id="lead-lastname" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Teléfono:</label>
+          <div class="phone-input-group">
+            <input type="text" id="lead-phone" readonly>
+            <span class="phone-icon-btn">📞</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Telefono 2:</label>
+          <div class="phone-input-group">
+            <input type="text" id="lead-phone2" readonly>
+            <span class="phone-icon-btn">📞</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>DNI:</label>
+          <input type="text" id="lead-dni" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Email:</label>
+          <input type="text" id="lead-email" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Producto:</label>
+          <input type="text" id="lead-product" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Afiliado:</label>
+          <input type="text" id="lead-affiliate" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Publisher:</label>
+          <input type="text" id="lead-publisher" readonly>
+        </div>
+
+        <div class="form-row">
+          <label>Pais:</label>
+          <input type="text" id="lead-country" readonly>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FRANJA AZUL: RESOLUCIÓN Y NOTAS DE LA LLAMADA -->
+    <div class="neotel-section-header">
+      Resolución y Notas de la Llamada
+    </div>
+
+    <!-- PANEL DE TABULACIÓN (SE BLOQUEA DURANTE EL AUDIO) -->
+    <section class="neotel-card tabulacion-panel locked" id="tabulacion-panel">
+      
+      <!-- FILA EXACTA DE SELECTORES DE NEOTEL -->
+      <div class="tabulacion-row">
+        <!-- 1. CATEGORÍA -->
+        <select id="select-category" disabled>
+          <option value="">Seleccione Categoría...</option>
+        </select>
+
+        <!-- 2. SUBCATEGORÍA -->
+        <select id="select-subcategory" disabled>
+          <option value="">Seleccione Subcategoría...</option>
+        </select>
+
+        <!-- HORA LOCAL / FECHA -->
+        <select class="input-mini"><option>Hora local</option></select>
+        <input type="text" id="tab-date" readonly class="input-mini">
+        <input type="text" value="" readonly class="input-xs">
+
+               <!-- ASIGNADO / AGENTE -->
+        <select class="input-agent">
+          <option>1234 - Pepito Gonzales</option>
+        </select>
+
+        <!-- 3. TELÉFONO DE AGENDA (EXTREMO DERECHO TAL CUAL LA FOTO) -->
+        <select id="select-agenda-phone" disabled class="input-agenda">
+          <option value="">-- Teléfono agenda --</option>
+        </select>
+      </div>
+
+      <!-- OBSERVACIONES -->
+      <div class="notes-area">
+        <textarea id="call-notes" placeholder="Observaciones de la llamada..." disabled></textarea>
+      </div>
+
+      <!-- PIE DEL DISCADOR: CRONÓMETRO + BOTONES -->
+      <div class="tabulacion-footer">
+        
+        <!-- CARTEL AMARILLO (FOTO 4 Y 6) -->
+        <div class="neotel-timer-badge" id="timer-badge">
+          Segundos para categorización automática: <span id="timer-seconds">20</span>
+        </div>
+
+        <!-- ACCIONES -->
+        <div class="footer-buttons">
+          <label class="chk-label"><input type="checkbox"> Aceptar y traer nuevamente</label>
+          <button id="btn-accept" class="btn-neotel-accept" disabled>✔ Aceptar</button>
+          <button id="btn-exit" class="btn-neotel-exit" disabled>Salir</button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL DE FEEDBACK EVALUATIVO -->
+  <div id="feedback-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title">Resultado de la Tabulación</h3>
+      <p id="modal-message"></p>
+      <div id="modal-details" class="modal-details"></div>
+      <button id="btn-next-scenario" class="btn-primary">Siguiente Caso ➔</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
